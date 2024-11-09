@@ -102,6 +102,7 @@ fun HomeScreen(navController: NavController) {
                     fontSize = 24.sp ,
                     fontFamily = digital ,
                     modifier = Modifier
+
                         .constrainAs(userName) {
                             top.linkTo(userProf.bottom , margin = 16.dp)
                             start.linkTo(parent.start)
