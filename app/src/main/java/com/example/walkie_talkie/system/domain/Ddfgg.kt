@@ -1,4 +1,4 @@
-package com.example.walkie_talkie.design.domain
+package com.example.walkie_talkie.system.domain
 
 class ddfgg {
 }

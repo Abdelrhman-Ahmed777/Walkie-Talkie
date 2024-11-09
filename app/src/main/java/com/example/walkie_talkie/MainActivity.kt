@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.walkie_talkie.ui.theme.Walkie_TalkieTheme
-
+import com.example.walkie_talkie.system.MyApp
+import com.example.walkie_talkie.theme.Walkie_TalkieDarkTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 class MainActivity : ComponentActivity() {
@@ -13,11 +14,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Walkie_TalkieTheme {
-
-                }
+            Walkie_TalkieDarkTheme {
+                val systemUiController = rememberSystemUiController()
+                systemUiController.isSystemBarsVisible = false
+                MyApp()
             }
         }
     }
+}
 
 

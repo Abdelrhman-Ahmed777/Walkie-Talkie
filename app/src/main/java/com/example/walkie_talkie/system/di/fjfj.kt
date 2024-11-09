@@ -1,4 +1,4 @@
-package com.example.walkie_talkie.design.di
+package com.example.walkie_talkie.system.di
 
 class fjfj {
 }

@@ -1,4 +1,5 @@
 pluginManagement {
+
     repositories {
         google {
             content {
@@ -21,4 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Walkie_Talkie"
 include(":app")
- 
+

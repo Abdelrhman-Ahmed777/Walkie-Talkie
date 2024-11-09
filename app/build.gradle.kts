@@ -2,8 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("com.google.devtools.ksp") version "1.9.0-1.0.11"
-  //  id("dagger.hilt.android") version "2.52"
+    id("com.google.dagger.hilt.android") version "2.44"
+    id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -13,6 +14,7 @@ android {
     defaultConfig {
         applicationId = "com.example.walkie_talkie"
         minSdk = 24
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -39,6 +41,7 @@ android {
     buildFeatures {
         compose = true
     }
+
 }
 
 dependencies {
@@ -51,6 +54,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.support.annotations)
+    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -59,32 +64,66 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-
+    implementation("androidx.compose.material3:material3:1.3.1")
     //KSP
-    ksp(libs.symbol.processing.api)
-
-
-
+    ksp("androidx.room:room-compiler:2.5.0")
     // Room
     implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler) // For Kotlin use kapt instead of annotationProcessor
+    ksp(libs.androidx.room.compiler)
 
 
-    // optional - Kotlin Extensions and Coroutines support for Room
+    // Kotlin Extensions and Coroutines support for Room
     implementation(libs.androidx.room.ktx)
 
-    // optional - Test helpers
+    // Test helpers
     testImplementation(libs.androidx.room.testing)
 
     // Lifecycle
-    implementation(libs.androidx.lifecycle.runtime.ktx) // or latest version
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     // viewModelScope
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
 
     //Coil
-    implementation(libs.coil) // For basic image loading
-    implementation(libs.coil.compose) // For Jetpack
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
+
+    //Navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //HTTP Client
+    implementation(libs.okhttp)
+
+
+    //Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.com.google.dagger.hilt.compiler2)
+    androidTestImplementation(libs.dagger.hilt.android.testing)
+    kspAndroidTest(libs.com.google.dagger.hilt.compiler2)
+    testImplementation(libs.dagger.hilt.android.testing)
+    kspTest(libs.com.google.dagger.hilt.compiler2)
+
+    // Constraints Layout
+    implementation(libs.androidx.constraintlayout.compose)
+
+
+    // ui controller
+    implementation(libs.accompanist.systemuicontroller)
 
 }
+
+
+
+ksp {
+    // Optional: Specify arguments for KSP processors
+    arg("room.schemaLocation" , "$projectDir/schemas") // Example for Room schema location
+
+}
+
 
