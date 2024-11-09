@@ -58,7 +58,8 @@ import kotlinx.coroutines.withContext
 @Composable
 fun WokiTokiScreen(
     selected: Int ,
-    pageState: PagerState
+    pageState: PagerState,
+    onclick: () -> Unit
 ) {
     val items = listOf(
         TopAppItems(
@@ -117,7 +118,7 @@ fun WokiTokiScreen(
                     .clip(CircleShape)
                     .size(50.dp)
                     .aspectRatio(1f)
-                    .clickable(enabled = true , onClick = {})
+                    .clickable(enabled = true , onClick = onclick)
                     .constrainAs(userProfile) {
                         top.linkTo(parent.top , margin = 48.dp)
                         start.linkTo(parent.start , margin = 24.dp)
