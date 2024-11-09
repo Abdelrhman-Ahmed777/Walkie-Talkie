@@ -3,7 +3,6 @@ package com.example.walkie_talkie.system.presentation.app_design.ui.screens.home
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -32,7 +31,7 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -69,74 +68,6 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
-        /*
-        fun HomeScreen(navController: NavController) {
-            val background: Brush = Brush.verticalGradient(
-                colors = listOf(
-                    black ,
-                    black ,
-                    darkBlue2 ,
-                    midPurple ,
-                    lightBlue
-                )
-            )
-
-
-            var selectedTabIndex by remember {
-                mutableStateOf(0)
-            }
-            val pageState = rememberPagerState { 3 }
-            LaunchedEffect(selectedTabIndex) {
-                pageState.animateScrollToPage(selectedTabIndex)// Define pageState here
-            }
-            LaunchedEffect(pageState.currentPage , pageState.isScrollInProgress) {
-                if (!pageState.isScrollInProgress) {
-                    selectedTabIndex = pageState.currentPage
-                }
-            }
-            Scaffold(
-                modifier = Modifier
-                    .fillMaxSize() ,
-                topBar = {
-                    Surface(
-                        shape = RoundedCornerShape(
-                            bottomStart = 50.dp , bottomEnd = 50.dp
-                        )
-                    ) {
-                        WokiTokiScreen(
-                            selectedTabIndex ,
-                            pageState
-                        )
-                    }
-                } ,
-                content = { paddingValues ->
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                            .background(background)
-                            .padding(paddingValues)
-                    ) {
-                        HorizontalPager(
-                            state = pageState ,
-                            modifier = Modifier
-                                .weight(1f)
-                                .background(background)
-                        ) { page ->
-                            when (page) {
-                                0 -> ChatsScreen(navController)
-                                1 -> StatusScreen(navController)
-                                2 -> ChannelsScreen(navController)
-                            }
-                        }
-                    }
-                }
-            )
-        }
-        */
-
-
-
 fun HomeScreen(navController: NavController) {
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -166,7 +97,7 @@ fun HomeScreen(navController: NavController) {
                         }
                 )
                 Text(
-                    text = "Abdelrhman Ahmed" ,
+                    text = "Abdelrahman Ahmed" ,
                     color = com.example.walkie_talkie.theme.lightBlue ,
                     fontSize = 24.sp ,
                     fontFamily = digital ,
@@ -382,7 +313,7 @@ fun HomeScreen(navController: NavController) {
         )
 
         var selectedTabIndex by remember {
-            mutableStateOf(0)
+            mutableIntStateOf(0)
         }
         val pageState = rememberPagerState { 3 }
         LaunchedEffect(selectedTabIndex) {
